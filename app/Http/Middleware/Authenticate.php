@@ -4,6 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use App\Http\Controllers\Auth;
+
+use Illuminate\Support\Facades\Session;
 
 class Authenticate extends Middleware
 {
@@ -15,7 +18,7 @@ class Authenticate extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        if (!Auth::check()) {
+        if (!\Auth::check()) {
 
             Session::flash('message', trans('errors.session_label'));
             Session::flash('type', 'warning');
@@ -23,6 +26,8 @@ class Authenticate extends Middleware
             return redirect()->route('home');
 
         }
+        return $next($request);
+
     }
 
     protected function redirectTo($request)

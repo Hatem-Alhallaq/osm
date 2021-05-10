@@ -1,5 +1,8 @@
 <!-- User menu -->
-
+<?php
+    use App\Models\Category;
+$categories = Category::all();
+?>
 <div class="sidebar-user">
     <div class="card-body">
         <div class="media">
@@ -44,10 +47,12 @@
             <a href="#" class="nav-link"><i class="icon-copy"></i> <span>اضافة منشور</span></a>
 
             <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                <li class="nav-item"><a href="#" class="nav-link ">منشور كتابي</a></li>
-                <li class="nav-item"><a href="#" class="nav-link ">فيديو</a></li>
-                <li class="nav-item"><a href="#" class="nav-link ">استطلاع رأي</a></li>
-                <li class="nav-item"><a href="#" class="nav-link ">صورة</a></li>
+                <li class="nav-item"><a href="{{ route('posts.index') }}" class="nav-link ">المنشورات </a></li>
+                <li class="nav-item"><a href="{{ route('posts.create') }}" class="nav-link ">منشور كتابي</a></li>
+                <li class="nav-item"><a href="{{ route('posts_v') }}" class="nav-link ">فيديو</a></li>
+                <li class="nav-item"><a href="{{ route('posts_op') }}" class="nav-link ">استطلاع رأي</a></li>
+                <li class="nav-item"><a href="{{ route('posts_ph') }}" class="nav-link ">صورة</a></li>
+                <li class="nav-item"><a href="{{ route('posts_competition') }}" class="nav-link ">مسابقة</a></li>
 
             </ul>
         </li>
@@ -57,11 +62,9 @@
             <a href="#" class="nav-link"><i class="icon-copy"></i> <span>فيديوهات</span></a>
 
             <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                <li class="nav-item"><a href="#" class="nav-link ">تصنيف 1</a></li>
-                <li class="nav-item"><a href="#" class="nav-link ">تصنيف 2</a></li>
-                <li class="nav-item"><a href="#" class="nav-link ">تصنيف 3</a></li>
-                <li class="nav-item"><a href="#" class="nav-link ">تصنيف 4</a></li>
-
+                @foreach($categories as $category)
+                <li class="nav-item"><a href="{{ route('cat_video',['id'=>$category->id])}}" class="nav-link ">{{$category->name}}</a></li>
+                @endforeach
             </ul>
         </li>
 
@@ -72,20 +75,20 @@
                 <span class="badge bg-blue-400 align-self-center ml-auto">5</span>
             </a>
         </li>
-        <li class="nav-item"><a href="#" class="nav-link"><i class="icon-width"></i> <span>المستخدمين</span></a></li>
+        <li class="nav-item"><a href="{{route('users.index')}}" class="nav-link"><i class="icon-width"></i> <span>المستخدمين</span></a></li>
 
 
         <li class="nav-item"><a href="#" class="nav-link"><i class="icon-width"></i> <span>الدعم الفني</span></a></li>
         <li class="nav-item"><a href="#" class="nav-link"><i class="icon-width"></i> <span>أسئلة شائعة</span></a></li>
-        <li class="nav-item"><a href="#" class="nav-link"><i class="icon-width"></i> <span>المسابقات</span></a></li>
+        <li class="nav-item"><a href="{{ route('competitiones')}}" class="nav-link"><i class="icon-width"></i> <span>المسابقات</span></a></li>
 
         <li class="nav-item nav-item-submenu">
             <a href="#" class="nav-link"><i class="icon-copy"></i> <span>اعدادات</span></a>
 
             <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                <li class="nav-item"><a href="#" class="nav-link">تصنيفات الفيديوهات</a></li>
+                <li class="nav-item"><a href="{{route('categories.index')}}" class="nav-link">تصنيفات الفيديوهات</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">اعدادات الموقع الخارجي</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">التحكم بالصور</a></li>
+                <li class="nav-item"><a href="{{route('images.create')}}" class="nav-link">التحكم بالصور</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">تصنيف التحكم بالأسئلة الشائعة</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">اعدادات عامة</a></li>
 

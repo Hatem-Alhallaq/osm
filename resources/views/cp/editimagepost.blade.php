@@ -46,20 +46,20 @@
 
                     <div class="card-body">
                         <form enctype="multipart/form-data"
-                              action="{{route('posts.store')}}"   method="post">
+                              action="{{route('posts.update',['id'=>$post->id])}}"   method="post">
                             {{csrf_field()}}
 
                             <div class="form-group">
                                 <label>العنوان:</label>
-                                <input type="text" name="title" class="form-control" placeholder="أدخل العنوان">
-                                <input type="hidden" name="type" value="1">
+                                <input type="text" name="title" value="@if($post->title){{$post->title}}@endif"  class="form-control" placeholder="أدخل العنوان">
+                                <input type="hidden" name="type" value="4">
                             </div>
-
 
                             <div class="form-group">
-                                <label>التفاصيل:</label>
-                                <textarea rows="5" cols="5" name="details" class="form-control" placeholder="أدخل تفاصيل المنشور"></textarea>
+                                <label>الصورة:</label>
+                                <input type="file" class="form-control" value=" @if($post->image){{$post->image}}@endif" name="image" placeholder="أدخل العنوان">
                             </div>
+
 
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">حفظ <i class="icon-paperplane ml-2"></i></button>

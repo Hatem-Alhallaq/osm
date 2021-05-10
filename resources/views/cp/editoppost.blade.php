@@ -42,23 +42,22 @@
 
                 <!-- Basic layout-->
                 <div class="card">
-
-
                     <div class="card-body">
                         <form enctype="multipart/form-data"
-                              action="{{route('posts.store')}}"   method="post">
+                              action="{{route('posts.update',['id'=>$post->id])}}"   method="post">
                             {{csrf_field()}}
 
                             <div class="form-group">
                                 <label>العنوان:</label>
-                                <input type="text" name="title" class="form-control" placeholder="أدخل العنوان">
-                                <input type="hidden" name="type" value="1">
+                                <input type="text" name="title" value="@if($post->title){{$post->title}}@endif" class="form-control" placeholder="أدخل العنوان">
+                                <input type="hidden" name="type" value="3">
                             </div>
-
 
                             <div class="form-group">
                                 <label>التفاصيل:</label>
-                                <textarea rows="5" cols="5" name="details" class="form-control" placeholder="أدخل تفاصيل المنشور"></textarea>
+                                <textarea rows="5" cols="5" name="details" class="form-control" placeholder="أدخل تفاصيل المنشور">
+                                    @if($post->details) {{$post->details}}@endif
+                                </textarea>
                             </div>
 
                             <div class="text-right">

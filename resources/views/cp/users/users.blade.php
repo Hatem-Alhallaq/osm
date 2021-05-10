@@ -52,55 +52,25 @@
                         <th>اسم المستخدم</th>
                         <th>البريد الالكتروني</th>
                         <th>أخر دخول</th>
-                        <th>رقم المعرف ID</th>
-                        <th>الحالة</th>
+{{--                        <th>الحالة</th>--}}
                         <th class="text-center">عمليات</th>
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($users as $user)
                     <tr>
-                        <td>محمد</td>
-                        <td><a href="#">a@a.a</a></td>
-                        <td>14-04-2021</td>
-                        <td>989998</td>
-                        <td><span class="badge badge-success">مفعل</span></td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->updated_at}}</td>
+{{--                        <td><span class="badge badge-success">مفعل</span></td>--}}
                         <td class="text-center">
-                                <a href="#" class=""><i class=""></i> تعديل</a> |
-                                <a href="#" class=""><i class=""></i> حذف</a> |
-                                <a href="#" class=""><i class=""></i> الغاء تفعيل</a>
+                                <a href="{{route('users.edit',['id'=>$user->id])}}" class=""><i class=""></i> تعديل</a> |
+                                <a href="" data-toggle="modal" data-target="#delete_model_{{$user->id}}" class=""><i class=""></i> حذف</a>
+{{--                                <a href="#" class=""><i class=""></i> الغاء تفعيل</a>--}}
 
                         </td>
                     </tr>
-
-                    <tr>
-                        <td>أسامة</td>
-                        <td><a href="#">b@b.b</a></td>
-                        <td>-</td>
-                        <td>2231221</td>
-                        <td><span class="badge badge-danger">غير مفعل</span></td>
-                        <td class="text-center">
-                            <a href="#" class=""><i class=""></i> تعديل</a> |
-                            <a href="#" class=""><i class=""></i> حذف</a> |
-                            <a href="#" class=""><i class=""></i>  تفعيل</a>
-
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>عماد</td>
-                        <td><a href="#">b@b3.b</a></td>
-                        <td>-</td>
-                        <td>3211232</td>
-                        <td><span class="badge badge-dark">حساب محظور</span></td>
-                        <td class="text-center">
-                            <a href="#" class=""><i class=""></i> تعديل</a> |
-                            <a href="#" class=""><i class=""></i> حذف</a> |
-                            <a href="#" class=""><i class=""></i> الغاء حظر</a>
-
-                        </td>
-                    </tr>
-
-
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -115,5 +85,41 @@
 
     </div>
     <!-- /main content -->
+    <?php $i=0 ?>
+    @foreach($users as $user)
+        <div class="modal fade" id="delete_model_{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">
 
+                            {{$user->name}}
+
+
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align: center;">
+                        <h1>
+                            <i class="fa fa-exclamation"></i>
+                        </h1>
+                        <h2>{{__('هل انت متاكد ؟')}}</h2>
+                        <p>{{__('لن تكون قادر على استرجاع المستخدم ')}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-round btn-default" data-dismiss="modal">
+                            {{__('لا , الغاء!')}}
+                        </button>
+
+                        <a href="{{route('users.delete',['id'=>$user->id])}}" class="btn btn-round btn-danger">{{__('نعم ')}}</a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php $i++ ?>
+    @endforeach
 @endsection

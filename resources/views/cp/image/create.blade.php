@@ -46,19 +46,22 @@
 
                     <div class="card-body">
                         <form enctype="multipart/form-data"
-                              action="{{route('posts.store')}}"   method="post">
+                              action="{{route('images.store')}}"   method="post">
                             {{csrf_field()}}
 
                             <div class="form-group">
                                 <label>العنوان:</label>
                                 <input type="text" name="title" class="form-control" placeholder="أدخل العنوان">
-                                <input type="hidden" name="type" value="1">
                             </div>
 
+                            <div class="form-group">
+                                <label>مدة التقليب:</label>
+                                <input type="number" class="form-control" min="0" name="dur_time" placeholder="أدخل مدة التقليب / ثانية">
+                            </div>
 
                             <div class="form-group">
-                                <label>التفاصيل:</label>
-                                <textarea rows="5" cols="5" name="details" class="form-control" placeholder="أدخل تفاصيل المنشور"></textarea>
+                                <label>الصورة:</label>
+                                <input type="file" class="form-control" name="image_url" placeholder="أدخل العنوان">
                             </div>
 
                             <div class="text-right">

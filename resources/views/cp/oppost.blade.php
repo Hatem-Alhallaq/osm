@@ -46,13 +46,13 @@
 
                     <div class="card-body">
                         <form enctype="multipart/form-data"
-                              action="{{route('posts.store')}}"   method="post">
+                              action="{{route('posts_op_s')}}"   method="post">
                             {{csrf_field()}}
 
                             <div class="form-group">
                                 <label>العنوان:</label>
                                 <input type="text" name="title" class="form-control" placeholder="أدخل العنوان">
-                                <input type="hidden" name="type" value="1">
+                                <input type="hidden" name="type" value="3">
                             </div>
 
 

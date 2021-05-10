@@ -46,20 +46,31 @@
 
                     <div class="card-body">
                         <form enctype="multipart/form-data"
-                              action="{{route('posts.store')}}"   method="post">
+                              action="{{route('posts_v_s')}}"   method="post">
                             {{csrf_field()}}
 
                             <div class="form-group">
                                 <label>العنوان:</label>
                                 <input type="text" name="title" class="form-control" placeholder="أدخل العنوان">
-                                <input type="hidden" name="type" value="1">
+                                <input type="hidden" name="type" value="2">
                             </div>
 
 
                             <div class="form-group">
-                                <label>التفاصيل:</label>
-                                <textarea rows="5" cols="5" name="details" class="form-control" placeholder="أدخل تفاصيل المنشور"></textarea>
+                                <label>رابط الفيديو:</label>
+                                <input type="text" name="video_url"  class="form-control" placeholder="أدخل الرابط">
                             </div>
+
+                            <div class="form-group">
+                                <label>التفاصيل:</label>
+                                <textarea rows="5" cols="5" name="details"  class="form-control" placeholder="أدخل تفاصيل المنشور"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>الصورة:</label>
+                                <input type="file" class="form-control" name="image" placeholder="أدخل العنوان">
+                            </div>
+
 
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">حفظ <i class="icon-paperplane ml-2"></i></button>

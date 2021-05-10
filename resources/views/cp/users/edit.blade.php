@@ -46,20 +46,19 @@
 
                     <div class="card-body">
                         <form enctype="multipart/form-data"
-                              action="{{route('posts.store')}}"   method="post">
+                              action="{{route('users.update',['id'=>$user->id])}}"   method="post">
                             {{csrf_field()}}
 
                             <div class="form-group">
-                                <label>العنوان:</label>
-                                <input type="text" name="title" class="form-control" placeholder="أدخل العنوان">
-                                <input type="hidden" name="type" value="1">
+                                <label>اسم المستخدم:</label>
+                                <input type="text" name="name" value="@if($user->name){{$user->name}}@endif"   class="form-control" placeholder="اسم المستخدم">
                             </div>
 
-
-                            <div class="form-group">
-                                <label>التفاصيل:</label>
-                                <textarea rows="5" cols="5" name="details" class="form-control" placeholder="أدخل تفاصيل المنشور"></textarea>
+                             <div class="form-group">
+                                <label>الايميل:</label>
+                                <input type="text" name="email" value="@if($user->email){{$user->email}}@endif"  class="form-control" placeholder="example@example.example ">
                             </div>
+
 
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">حفظ <i class="icon-paperplane ml-2"></i></button>
