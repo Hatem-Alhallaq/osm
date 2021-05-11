@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-
-use App\Models\Post;
+use App\Models\faq;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class CategoryController extends Controller
+class FaqController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-        return view('cp.category.index')->with('categories',$categories);
-
-
+        $faqs = faq::orderBy('order_id')->get();
+        return view('cp.faq.index')->with('faqs',$faqs);
     }
 
     /**
@@ -32,6 +28,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('cp.faq.create');
     }
 
     /**
@@ -42,34 +39,31 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = $request->all();
-        $category = Category::create($category);
-        return redirect::route('categories.index');
+        //
+        $faq = $request->all();
+        $faq = faq::create($faq);
+
+        return redirect::route('faqs.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function show( $id)
+    public function show(faq $faq)
     {
         //
-
-        $posts = post::get()->where('category_id',$id)->where('type','2');
-        //dd($posts);
-        return view('cp.category.show')->with('posts',$posts);
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(faq $faq)
     {
         //
     }
@@ -78,10 +72,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, faq $faq)
     {
         //
     }
@@ -89,22 +83,11 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy(faq $faq)
     {
         //
-        $category = Category::find($id);
-        if($category)
-        {
-            $category = Category::find($id);
-            $category->delete();
-            return redirect::route('categories.index');
-        }
-        else
-        {
-            return "404";
-        }
     }
 }

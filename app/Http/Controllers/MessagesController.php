@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-
-use App\Models\Post;
+use App\Models\messages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class CategoryController extends Controller
+class MessagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-        return view('cp.category.index')->with('categories',$categories);
-
-
+        $messages = messages::all();
+        return view('cp.messages.index')->with('messages',$messages);
     }
 
     /**
@@ -32,6 +28,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('cp.messages.create');
     }
 
     /**
@@ -42,34 +39,35 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = $request->all();
-        $category = Category::create($category);
-        return redirect::route('categories.index');
+        //
+        $user =  \Auth::user();
+        $messages = $request->all();
+        $messages['user_id']= $user->id;
+        $messages = messages::create($messages);
+
+        return redirect::route('messages.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\messages  $messages
      * @return \Illuminate\Http\Response
      */
     public function show( $id)
     {
         //
-
-        $posts = post::get()->where('category_id',$id)->where('type','2');
-        //dd($posts);
-        return view('cp.category.show')->with('posts',$posts);
-
+        $message = messages::get()->where('id',$id);
+        return view('cp.messages.show')->with('message',$message);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(messages $messages)
     {
         //
     }
@@ -78,10 +76,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, messages $messages)
     {
         //
     }
@@ -89,22 +87,11 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy(messages $messages)
     {
         //
-        $category = Category::find($id);
-        if($category)
-        {
-            $category = Category::find($id);
-            $category->delete();
-            return redirect::route('categories.index');
-        }
-        else
-        {
-            return "404";
-        }
     }
 }

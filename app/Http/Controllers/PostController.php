@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -40,7 +41,8 @@ class PostController extends Controller
     public function create_v()
     {
         //
-        return view('cp.videopost');
+        $categories = Category::all();
+        return view('cp.videopost')->with('categories',$categories);
     }
     public function create_ph()
     {

@@ -47,11 +47,12 @@
 
                     <div class="row">
                         <div class="col-lg-12">
+                            @foreach($posts as $post)
                             <div class="card">
                                 <div class="card-header header-elements-sm-inline">
-                                    <h6 class="card-title"> أحمد</h6>
+                                    <h6 class="card-title"> {{$post->title}}</h6>
                                     <div class="header-elements">
-                                        <span><i class="icon-checkmark-circle mr-2 text-success"></i> منذ 50  دقيقة</span>
+                                        <span><i class="icon-checkmark-circle mr-2 text-success"></i>{{$post->created_at}}</span>
                                         <div class="list-icons ml-3">
                                             <div class="dropdown">
                                                 <a href="#" class="list-icons-item caret-0 dropdown-toggle" data-toggle="dropdown">
@@ -66,9 +67,13 @@
 
                                 <div class="card-body">
                                     <div class="card-img-actions mb-3">
-                                        <img class="card-img img-fluid" src="global_assets/images/demo/cover3.jpg" alt="">
-                                        <div class="card-img-actions-overlay card-img">
-                                            <a href="blog_single.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
+                                        @if($post->image !="")
+                                        <img class="card-img img-fluid" style="height: 350px;" src="{{asset('/storage/posts/'.$post->image)}}" alt="">
+                                        @else
+                                            <img class="card-img img-fluid" style="height: 350px;" src="{{asset('/storage/posts/T7ERczp62XCaFV1lxop0D2COe4qakFEi6Etxprm0.jpg')}}" alt="">
+                                        @endif
+                                            <div class="card-img-actions-overlay card-img">
+                                            <a href="" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
                                                 <i class="icon-link"></i>
                                             </a>
                                         </div>
@@ -76,7 +81,7 @@
 
                                     <h6 class="mb-3">
                                         <i class="icon-eye4 mr-2"></i>
-                                        عدد المشاهدات : 50
+                                        عدد المشاهدات : {{$post->views}}
                                     </h6>
 
 
@@ -84,6 +89,7 @@
 
 
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

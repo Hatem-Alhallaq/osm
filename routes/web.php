@@ -6,6 +6,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\MessagesController;
 use App\Models\Post;
 use App\Models\Category;
 /*
@@ -28,10 +30,10 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['web'], 'prefix' => 'cp'], function () {
-
-    Route::get('/', function () {
-        return view('cp/home');
-    })->name('home');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//    Route::get('/', function () {
+//        return view('cp/home');
+//    })->name('home');
 
     Route::get('chat', function () {
         return view('/cp/chat');
@@ -62,6 +64,9 @@ Route::group(['middleware' => ['web'], 'prefix' => 'cp'], function () {
     Route::get('/users/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
     Route::post('/users/{id}/edit', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     Route::get('/users/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
+    Route::resource('faqs', FaqController::class);
+    Route::resource('messages', MessagesController::class);
+    Route::get('/messages/{id}/show', [App\Http\Controllers\MessagesController::class, 'show'])->name('messages.show');
 
     Route::get('/cp/categories', function () {
         return view('/cp/categories');

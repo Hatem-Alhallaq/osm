@@ -78,8 +78,8 @@ $categories = Category::all();
         <li class="nav-item"><a href="{{route('users.index')}}" class="nav-link"><i class="icon-width"></i> <span>المستخدمين</span></a></li>
 
 
-        <li class="nav-item"><a href="#" class="nav-link"><i class="icon-width"></i> <span>الدعم الفني</span></a></li>
-        <li class="nav-item"><a href="#" class="nav-link"><i class="icon-width"></i> <span>أسئلة شائعة</span></a></li>
+        <li class="nav-item"><a href="{{route('messages.index')}}" class="nav-link"><i class="icon-width"></i> <span>الدعم الفني</span></a></li>
+        <li class="nav-item"><a href="{{route('faqs.index')}}" class="nav-link"><i class="icon-width"></i> <span>أسئلة شائعة</span></a></li>
         <li class="nav-item"><a href="{{ route('competitiones')}}" class="nav-link"><i class="icon-width"></i> <span>المسابقات</span></a></li>
 
         <li class="nav-item nav-item-submenu">

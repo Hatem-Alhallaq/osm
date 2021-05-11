@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class messages extends Model
 {
     use HasFactory;
-    public $table = 'posts';
+    public $table = 'messages';
     protected $fillable = [
-        'title','details','type','user_id','views','video_url','category_id','image'
+        'message',
+        'title',
+        'user_id'
     ];
-
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');

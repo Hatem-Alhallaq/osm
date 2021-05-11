@@ -46,35 +46,24 @@
 
                     <div class="card-body">
                         <form enctype="multipart/form-data"
-                              action="{{route('posts_v_s')}}"   method="post">
+                              action="{{route('faqs.store')}}"   method="post">
                             {{csrf_field()}}
 
                             <div class="form-group">
                                 <label>العنوان:</label>
-                                <input type="text" name="title" class="form-control" placeholder="أدخل العنوان">
-                                <input type="hidden" name="type" value="2">
+                                <input type="text" name="question" class="form-control" placeholder="أدخل العنوان">
                             </div>
 
                             <div class="form-group">
-                                <label>رابط الفيديو:</label>
-                                <input type="text" name="video_url"  class="form-control" placeholder="أدخل الرابط">
-                            </div>
-                            <div class="form-group">
-                                <label>التصنيف:</label>
-                                <select id="" name="category_id" class="custom-select col">
-                                    @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>الصورة:</label>
-                                <input type="file" class="form-control" name="image" placeholder="أدخل العنوان">
-                            </div>
-                            <div class="form-group">
                                 <label>التفاصيل:</label>
-                                <textarea rows="5" cols="5" name="details"  class="form-control" placeholder="أدخل تفاصيل المنشور"></textarea>
+                                <textarea rows="5" cols="5" name="answer" class="form-control" placeholder="أدخل تفاصيل المنشور"></textarea>
                             </div>
+
+                            <div class="form-group">
+                                <label>الترتيب :</label>
+                                <input type="number" class="form-control" min="0" name="order_id" placeholder="">
+                            </div>
+
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">حفظ <i class="icon-paperplane ml-2"></i></button>
                             </div>
