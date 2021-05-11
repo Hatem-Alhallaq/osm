@@ -67,6 +67,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'cp'], function () {
     Route::resource('faqs', FaqController::class);
     Route::resource('messages', MessagesController::class);
     Route::get('/messages/{id}/show', [App\Http\Controllers\MessagesController::class, 'show'])->name('messages.show');
+    Route::get('/configs', [App\Http\Controllers\HomeController::class, 'cofig_create'])->name('configs');
+    Route::post('/configs', [App\Http\Controllers\HomeController::class, 'cofig_store'])->name('configs.store');
 
     Route::get('/cp/categories', function () {
         return view('/cp/categories');

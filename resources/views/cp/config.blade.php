@@ -66,12 +66,12 @@
                             <div class="tab-pane fade show active" id="vertical-left-tab1">
 
 
-                                <form action="#" data-select2-id="45">
-
+                                <form  enctype="multipart/form-data" action="{{route('configs.store')}}"   method="post" data-select2-id="45">
+                                     {{csrf_field()}}
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">اسم الموقع:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="site_name" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
@@ -81,14 +81,14 @@
                                         <div class="col-lg-9">
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="unstyled-radio-left" checked>
+                                                    <input type="radio" class="form-check-input" name="site_register" checked>
                                                     مفتوح
                                                 </label>
                                             </div>
 
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input type="radio" class="form-check-input" name="unstyled-radio-left" checked>
+                                                    <input type="radio" class="form-check-input" name="site_register" checked>
                                                     مغلق
                                                 </label>
                                             </div>
@@ -100,7 +100,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label"> شعار الموقع:</label>
                                         <div class="col-lg-9">
-                                            <input type="file" class="form-control h-auto">
+                                            <input type="file" name="site_logo" class="form-control h-auto">
                                             <span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
                                         </div>
                                     </div>
@@ -123,14 +123,14 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">وصف الموقع:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="site_description" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">الكلمات المفتاحية:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="site_key_word" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
@@ -140,7 +140,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label"> أيقونة الموقع:</label>
                                         <div class="col-lg-9">
-                                            <input type="file" class="form-control h-auto">
+                                            <input type="file" name="site_icon" class="form-control h-auto">
                                             <span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
                                         </div>
                                     </div>
@@ -162,13 +162,13 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">العنوان:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="title" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">التفاصيل:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="details" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
@@ -176,14 +176,14 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label"> صورة الخلفية:</label>
                                         <div class="col-lg-9">
-                                            <input type="file" class="form-control h-auto">
+                                            <input type="file" name="background_image" class="form-control h-auto">
                                             <span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label"> الصورة الأمامية:</label>
                                         <div class="col-lg-9">
-                                            <input type="file" class="form-control h-auto">
+                                            <input type="file" name="front_image" class="form-control h-auto">
                                             <span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
                                         </div>
                                     </div>
@@ -205,13 +205,13 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">اسم الموقع:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="q_site_name" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">رابط الاحالة:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="q_site_url" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
@@ -219,7 +219,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label"> شعار الموقع :</label>
                                         <div class="col-lg-9">
-                                            <input type="file" class="form-control h-auto">
+                                            <input type="file" name="q_site_logo" class="form-control h-auto">
                                             <span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
                                         </div>
                                     </div>
@@ -309,56 +309,56 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">فيسبوك:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="fb" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">تويتر:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="tw" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">انستجرام:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="inst" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">يوتيوب:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="yt" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">فيميو:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="vimo" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">واتساب:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="whp" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">تيليجرام:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="tele" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">سكايب:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="skp" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
@@ -380,19 +380,19 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">الاسم:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_name" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">المسمى الوطيفي:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_emp_name" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">التفاصيل:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text"  name="manegar_details" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
@@ -400,14 +400,14 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label"> صورة الخلفية:</label>
                                         <div class="col-lg-9">
-                                            <input type="file" class="form-control h-auto">
+                                            <input type="file" name="manegar_bk_g_image" class="form-control h-auto">
                                             <span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label"> الصورة الشخصية:</label>
                                         <div class="col-lg-9">
-                                            <input type="file" class="form-control h-auto">
+                                            <input type="file" name="manegar_image" class="form-control h-auto">
                                             <span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
                                         </div>
                                     </div>
@@ -415,56 +415,56 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">فيسبوك:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_fb" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">تويتر:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_tw" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">انستجرام:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_inst" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">يوتيوب:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_yt" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">فيميو:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_vimo" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">واتساب:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_whp" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">تيليجرام:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_tele" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">سكايب:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_skp" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
@@ -485,36 +485,30 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">العنوان:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text"  name="manegar_address" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">البريد الالكتروني:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_email" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">رقم الجوال:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text"  name="manegar_mobile"class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">رقم الهاتف:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" class="form-control" placeholder="Eugene Kopyov">
+                                            <input type="text" name="manegar_telephone" class="form-control" placeholder="Eugene Kopyov">
                                         </div>
                                     </div>
-
-
-
-
-
-
 
                                     <div class="text-right">
                                         <button type="submit" class="btn btn-primary">حفظ الاعدادات <i
@@ -524,7 +518,7 @@
 
                             </div>
 
-
+<?php //dd(config()->get('settings.manegar_telephone'))?>
 
                         </div>
                 </div>

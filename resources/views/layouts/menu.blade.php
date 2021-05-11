@@ -90,7 +90,7 @@ $categories = Category::all();
                 <li class="nav-item"><a href="#" class="nav-link">اعدادات الموقع الخارجي</a></li>
                 <li class="nav-item"><a href="{{route('images.create')}}" class="nav-link">التحكم بالصور</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">تصنيف التحكم بالأسئلة الشائعة</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">اعدادات عامة</a></li>
+                <li class="nav-item"><a href="{{route('configs')}}" class="nav-link">اعدادات عامة</a></li>
 
             </ul>
         </li>

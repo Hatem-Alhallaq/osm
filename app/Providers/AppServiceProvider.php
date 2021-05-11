@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Config;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,5 +25,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+//        Config::truncate();
+        $settings = Config::all();
+        foreach($settings as $setting){
+            config()->set('settings.' . $setting->key , $setting->value);
+        }
     }
 }
